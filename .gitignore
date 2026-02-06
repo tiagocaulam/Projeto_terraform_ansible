@@ -6,7 +6,7 @@
 .terraform.lock.hcl
 
 hosts.ini
-
+projeto_final_key
 # Arquivos sensíveis
 *.env
 .env
