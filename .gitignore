@@ -5,9 +5,7 @@
 .terraform/
 .terraform.lock.hcl
 
-# SSH Keys
-projeto_final_key
-*.pem
+
 
 # Arquivos sensíveis
 *.env
