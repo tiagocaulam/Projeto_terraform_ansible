@@ -5,7 +5,7 @@
 .terraform/
 .terraform.lock.hcl
 
-
+hosts.ini
 
 # Arquivos sensíveis
 *.env

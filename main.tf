@@ -5,7 +5,27 @@ terraform{
             source  = "hashicorp/aws"
             version = "~> 5.0"
         }
+        tls = {
+            source  = "hashicorp/tls"
+            version = "~> 4.0"
+        }
     }   
+}
+
+resource "tls_private_key" "projeto_final" {
+    algorithm = "RSA"
+    rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "projeto_final" {
+    key_name   = "projeto_final_key"
+    public_key = tls_private_key.projeto_final.public_key_openssh
+}
+
+resource "local_sensitive_file" "private_key" {
+    content         = tls_private_key.projeto_final.private_key_pem
+    filename        = "${path.module}/projeto_final_key"
+    file_permission = "0600"
 }
 
 provider "aws" {
@@ -106,7 +126,7 @@ resource "aws_instance" "ec2_webserver" {
     ami = data.aws_ami.ubuntu.id
     instance_type = "t3.micro"
     subnet_id = aws_subnet.public.id
-    key_name = "Projeto_final_key"
+    key_name = aws_key_pair.projeto_final.key_name
     security_groups = [aws_security_group.webserver.id]
     tags = {
         Name = "ec2-webserver-aula-terraform"
