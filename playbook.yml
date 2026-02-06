@@ -1,0 +1,45 @@
+---
+- name: Configuração do Webserver para o Trabalho Final
+  hosts: all
+  become: yes
+  tasks:
+    - name: 1. Atualizar pacotes do sistema (apt upgrade)
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: 2. Instalar o NGINX
+      apt:
+        name: nginx
+        state: present
+
+    - name: 3. Criar a página customizada via Ansible
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html lang="pt-br">
+          <head>
+              <meta charset="UTF-8">
+              <title>Trabalho Final - Tiago Maia, Igor Oliveira dos Santos, Moisés Fontenele</title>
+              <style>
+                  body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f9; }
+                  .card { padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+                  h1 { color: #2d3748; }
+                  p { color: #718096; }
+              </style>
+          </head>
+          <body>
+              <div class="card">
+                  <h1>🚀 Infra via Terraform</h1>
+                  <p>Configuração e NGINX realizados via <b>Ansible</b>.</p>
+                  <p>Alunos: Tiago Caúla, Igor Oliveira dos Santos, Moisés Fontenele</p>
+              </div>
+          </body>
+          </html>
+
+    - name: 4. Garantir que o NGINX está rodando
+      service:
+        name: nginx
+        state: started
+        enabled: yes
