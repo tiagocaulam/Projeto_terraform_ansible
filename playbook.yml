@@ -21,7 +21,7 @@
           <html lang="pt-br">
           <head>
               <meta charset="UTF-8">
-              <title>Trabalho Final - Tiago Maia, Igor Oliveira dos Santos, Moisés Fontenele</title>
+              <title>Trabalho Final - Tiago Maia e Igor Oliveira dos Santos</title>
               <style>
                   body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f9; }
                   .card { padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
@@ -33,7 +33,7 @@
               <div class="card">
                   <h1>🚀 Infra via Terraform</h1>
                   <p>Configuração e NGINX realizados via <b>Ansible</b>.</p>
-                  <p>Alunos: Tiago Caúla, Igor Oliveira dos Santos, Moisés Fontenele</p>
+                  <p>Alunos: Tiago Caúla e Igor Oliveira dos Santos</p>
               </div>
           </body>
           </html>
